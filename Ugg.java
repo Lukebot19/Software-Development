@@ -63,6 +63,10 @@ public class Ugg {
     }
     static Random rnd = new Random();
 
+    
+    /** 
+     * @return UggRock
+     */
     static UggRock drawRock() {
         double rndSize = rnd.nextDouble();
         double rndType = rnd.nextDouble();
@@ -90,9 +94,29 @@ public class Ugg {
         return new UggRock(rockType, rockSize);
     }
     public static void main(String[] args) {
-        for (int i = 0; i < 20; i++) {
-            UggRock rock1 = drawRock();
-            System.out.println(rock1 + ", "+ rock1.rockValue());
-        }
+        // for (int i = 0; i < 20; i++) {
+        //     UggRock rock1 = drawRock();
+        //     System.out.println(rock1 + ", "+ rock1.rockValue());
+        // }
+
+        Thread t1 = new Thread (new Runnable() {
+            public void run() {
+                for (int i=0;i<=20;i++) {
+                    UggRock myRock = drawRock();
+                    System.out.println(Thread.currentThread().getName() + ", Rock Size: " + myRock.getRockSize() + " , Rock Type: " + myRock.getRockType());
+                }
+            }
+        }, "Thread 1");
+        Thread t2 = new Thread (new Runnable() {
+            public void run() {
+                for (int i=0;i<=20;i++) {
+                    UggRock myRock = drawRock();
+                    System.out.println(Thread.currentThread().getName() + ", Rock Size: " + myRock.getRockSize() + " , Rock Type: " + myRock.getRockType());
+                }
+            }
+        }, "Thread 2");
+        t1.start();
+        t2.start();
     }
 }
+
