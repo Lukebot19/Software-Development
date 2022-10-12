@@ -94,11 +94,7 @@ public class Ugg {
         return new UggRock(rockType, rockSize);
     }
     public static void main(String[] args) {
-        // for (int i = 0; i < 20; i++) {
-        //     UggRock rock1 = drawRock();
-        //     System.out.println(rock1 + ", "+ rock1.rockValue());
-        // }
-
+       
         Thread t1 = new Thread (new Runnable() {
             public void run() {
                 for (int i=0;i<=20;i++) {
