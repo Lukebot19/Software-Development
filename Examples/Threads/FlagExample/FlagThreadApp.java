@@ -15,7 +15,7 @@ public class FlagThreadApp {
         try {
             Thread.sleep(1000); // sleep for 1000 milliseconds
         } catch (InterruptedException e) {
-            // as before, we are nt going to respond to an interruption
+            // as before, we are not going to respond to an interruption
         }
         a.stopThread();
         b.stopThread();

@@ -1,3 +1,4 @@
+package UggRock;
 enum UggRockSize {
     BIGUN(5),
     QUIET_BIGUN(3),

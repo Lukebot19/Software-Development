@@ -12,9 +12,10 @@ public class MyCounterApp {
         // 1000 times
         Thread t1 = new Thread(new Runnable() {
             public void run() {
-                for (int i=1;i<=500;i++)
-                a.addTwo();
-                System.out.println("Value on thread 1 exit: " + a.countValue());
+                for (int i=1;i<=500;i++) {
+                    a.addTwo();
+                    System.out.println("Value on thread 1 exit: " + a.countValue());
+                }
             }
         });
         // thread inner class, will call subtractTwo on the MyCounter instance 1000 times
