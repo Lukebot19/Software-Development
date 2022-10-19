@@ -46,7 +46,6 @@ public class Main {
         static Random rnd = new Random();
         // Function called by producer thread
         public synchronized void produce() throws InterruptedException {
-            // TODO: Add your code here
             while (true) {
                 if (list.size() == capacity) {
                     System.out.println("Producer is waiting");
@@ -63,7 +62,6 @@ public class Main {
 
         // Function callled by consumer thread
         public synchronized void consume() throws InterruptedException {
-            // TODO: Add your code here
             while (true) {
                 if (list.size() == 0) {
                     System.out.println("Consumer is waiting");
