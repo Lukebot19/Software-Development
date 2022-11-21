@@ -26,6 +26,7 @@ public class IOProcessor extends BasicThread
     private ArrayList<FileWriteEventListener> fileListeners = new ArrayList<>();
     private ArrayList<UniversityWriteEventListener> universityListeners = new ArrayList<>();
     private ArrayList<ExeterWriteEventListener> exeterListeners = new ArrayList<>();
+    private ArrayList<MultipleWriteEventListener> multipleListeners = new ArrayList<>();
     private Console console = System.console();
 
     private IOProcessor() throws java.io.IOException {
@@ -42,11 +43,11 @@ public class IOProcessor extends BasicThread
 
         // register listeners with the source
         ioProcessor.addFileWriteEventListener(fileThread);
-        // ioProcessor.addFileWriteEventListener(multipleThread);
+        ioProcessor.addFileWriteEventListener(multipleThread);
         ioProcessor.addUniversityWriteEventListener(universityThread);
-        // ioProcessor.addUniversityWriteEventListener(multipleThread);
+        ioProcessor.addUniversityWriteEventListener(multipleThread);
         ioProcessor.addExeterWriteEventListener(exeterThread);
-        // ioProcessor.addExeterWriteEventListener(multipleThread);
+        ioProcessor.addExeterWriteEventListener(multipleThread);
 
         System.out.println("starting threads");
         // start listening threads
@@ -106,20 +107,36 @@ public class IOProcessor extends BasicThread
         for (ExeterWriteEventListener l : exeterListeners)
             l.eventOccured(evt);
     }
+    
+    private void notifyMultipleWriteEventListeners(MultipleWriteEvent evt) throws IOException {
+        for (MultipleWriteEventListener l : multipleListeners)
+            l.eventOccured(evt);
+    }
 
     public void addFileWriteEventListener(FileWriteEventListener listener) {
         this.fileListeners.add(listener);
     }
+    
+    public void addFileWriteEventListener(MultipleWriteEventListener listener) {
+        this.multipleListeners.add(listener);
+    }
 
     public void addUniversityWriteEventListener(UniversityWriteEventListener listener) {
         this.universityListeners.add(listener);
+    }
+    
+    public void addUniversityWriteEventListener(MultipleWriteEventListener listener) {
+        this.multipleListeners.add(listener);
     }
 
     public void addExeterWriteEventListener(ExeterWriteEventListener listener) {
         this.exeterListeners.add(listener);
     }
     
-
+    public void addExeterWriteEventListener(MultipleWriteEventListener listener) {
+        this.multipleListeners.add(listener);
+    }
+    
     public void removeFileWriteEventListener(FileWriteEventListener listener) {
         this.fileListeners.remove(listener);
     }

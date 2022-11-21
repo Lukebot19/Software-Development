@@ -37,7 +37,6 @@ package Examples.Listeners;
  * text field.
  */
 
-import java.awt.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;

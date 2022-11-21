@@ -1,3 +1,5 @@
 
 *.class
 *.txt
+/Largest/nbproject/
+/Largest/target/
